@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f3">
+  <meta name="description" content="Discover considered homes and exceptional property opportunities across Dubai with Giivaa Homes Real Estate Brokers.">
+  <title>Giivaa Homes | Dubai Real Estate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17241f;
+      --muted: #68716b;
+      --green: #284c3b;
+      --green-dark: #19372b;
+      --sand: #f8f7f3;
+      --line: #e7e6df;
+      --gold: #c9a96e;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--sand); color: var(--ink); font-family: var(--sans); }
+    a { color: inherit; text-decoration: none; }
+    button, select { font: inherit; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+
+    .announcement {
+      padding: 10px 24px;
+      background: var(--green-dark);
+      color: #f5f2e9;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .announcement span { color: #dfc58e; }
+    header { position: relative; z-index: 5; background: rgba(248,247,243,.96); }
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: inline-flex; align-items: center; flex-shrink: 0; }
+    .brand-image { display: block; width: 74px; height: 76px; object-fit: contain; }
+    .nav-links { display: flex; align-items: center; gap: 34px; color: #4c5650; font-size: 12px; }
+    .nav-links a:hover, .footer-links a:hover { color: var(--gold); }
+    .nav-cta, .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 20px;
+      background: var(--green);
+      color: white;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      transition: background .2s, transform .2s;
+    }
+    .nav-cta:hover, .button:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .menu-toggle { display: none; border: 0; background: none; color: var(--ink); font-size: 23px; cursor: pointer; }
+
+    .hero {
+      min-height: 650px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: #39433d;
+      color: white;
+    }
+    .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 56%; }
+    .hero::after { position: absolute; inset: 0; content: ""; background: linear-gradient(90deg, rgba(14,26,21,.78) 0%, rgba(14,26,21,.46) 47%, rgba(14,26,21,.05) 100%); }
+    .hero-content { position: relative; z-index: 1; padding-block: 88px 140px; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; color: #e2c98f; font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+    .eyebrow::before { width: 28px; height: 1px; background: currentColor; content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 700px; margin: 22px 0 18px; font: 500 clamp(46px, 6vw, 78px)/1.07 var(--serif); letter-spacing: -.025em; }
+    .hero-copy { max-width: 455px; margin-bottom: 30px; color: rgba(255,255,255,.82); font-size: 14px; line-height: 1.8; }
+    .button-light { background: #f7f4ec; color: var(--ink); }
+    .button-light:hover { background: white; }
+    .hero-note { position: absolute; z-index: 1; right: max(24px, calc((100% - 1180px)/2)); bottom: 42px; color: rgba(255,255,255,.8); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
+
+    .search-panel {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr auto;
+      align-items: end;
+      gap: 20px;
+      margin-top: -1px;
+      padding: 23px 26px;
+      background: white;
+      box-shadow: 0 14px 36px rgba(29,40,33,.08);
+    }
+    .field label { display: block; margin-bottom: 9px; color: var(--muted); font-size: 9px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
+    .field select { width: 100%; padding: 0 22px 0 0; border: 0; outline-color: var(--gold); background: transparent; color: var(--ink); font-size: 13px; }
+    .search-button { min-width: 140px; border: 0; cursor: pointer; }
+    .section { padding-block: 104px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 35px; }
+    .section-heading h2, .about-copy h2, .areas-heading h2, .contact-copy h2 { margin: 12px 0 0; font: 500 clamp(34px, 4vw, 48px)/1.15 var(--serif); letter-spacing: -.025em; }
+    .section-heading .eyebrow, .about-copy .eyebrow, .areas-heading .eyebrow, .contact-copy .eyebrow { color: var(--green); }
+    .text-link { display: inline-flex; align-items: center; gap: 10px; padding-bottom: 5px; border-bottom: 1px solid #b6b9b1; color: var(--green); font-size: 11px; font-weight: 600; }
+    .text-link:hover { border-color: var(--gold); color: #846b3f; }
+
+    .property-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .property-card { background: #fff; }
+    .property-photo { position: relative; height: 255px; overflow: hidden; background: #e5e3db; }
+    .property-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .property-card:hover .property-photo img { transform: scale(1.04); }
+    .tag { position: absolute; top: 16px; left: 16px; padding: 8px 10px; background: rgba(248,247,243,.94); color: var(--green); font-size: 9px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+    .property-info { padding: 20px 21px 22px; }
+    .location { color: var(--muted); font-size: 10px; letter-spacing: .11em; text-transform: uppercase; }
+    .property-info h3 { margin: 8px 0 15px; font: 500 21px var(--serif); }
+    .property-meta { display: flex; gap: 17px; padding-top: 14px; border-top: 1px solid var(--line); color: #525c55; font-size: 11px; }
+    .price { margin-left: auto; color: var(--green); font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .disclaimer { margin: 18px 0 0; color: #858b85; font-size: 10px; line-height: 1.6; }
+
+    .about { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 78px; background: #eeeee7; }
+    .about-image-wrap { position: relative; padding: 0 38px 38px 0; }
+    .about-image-wrap::after { position: absolute; right: 0; bottom: 0; z-index: 0; width: 72%; height: 70%; border: 1px solid #c9a96e; content: ""; }
+    .about-image { position: relative; z-index: 1; width: 100%; height: 425px; object-fit: cover; }
+    .about-copy { max-width: 450px; }
+    .about-copy p { margin: 22px 0 26px; color: var(--muted); font-size: 13px; line-height: 1.9; }
+    .stat-row { display: flex; gap: 36px; margin: 32px 0; padding-top: 23px; border-top: 1px solid #d8d8cf; }
+    .stat strong { display: block; color: var(--green); font: 500 29px var(--serif); }
+    .stat span { color: var(--muted); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+
+    .areas { background: var(--green-dark); color: white; }
+    .areas-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 34px; }
+    .areas-heading h2 { max-width: 450px; }
+    .areas-heading .eyebrow { color: #dfc58e; }
+    .areas-heading p { max-width: 350px; margin: 0; color: rgba(255,255,255,.63); font-size: 12px; line-height: 1.8; }
+    .area-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .area-card { position: relative; min-height: 270px; display: flex; align-items: end; padding: 20px; overflow: hidden; background: #39433d; }
+    .area-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .76; transition: transform .5s, opacity .3s; }
+    .area-card::after { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(12,24,18,.78), transparent 70%); content: ""; }
+    .area-card:hover img { transform: scale(1.06); opacity: .92; }
+    .area-card div { position: relative; z-index: 1; }
+    .area-card h3 { margin: 0 0 4px; font: 500 23px var(--serif); }
+    .area-card p { margin: 0; color: rgba(255,255,255,.76); font-size: 10px; }
+
+    .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .contact-copy p { max-width: 430px; margin: 20px 0 0; color: var(--muted); font-size: 13px; line-height: 1.9; }
+    .contact-card { padding: 32px; border: 1px solid var(--line); background: #fff; }
+    .contact-card h3 { margin-bottom: 8px; font: 500 24px var(--serif); }
+    .contact-card p { margin-bottom: 20px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+    .contact-details { display: grid; gap: 13px; margin: 0 0 22px; }
+    .contact-detail { display: flex; align-items: center; gap: 12px; color: var(--green); font-size: 13px; overflow-wrap: anywhere; }
+    .contact-detail span { width: 20px; color: var(--gold); font-size: 15px; text-align: center; }
+    .contact-detail:hover { color: #846b3f; }
+    .contact-card .button { width: 100%; }
+    footer { padding-block: 27px; background: #14281e; color: rgba(255,255,255,.7); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-inner .brand-image { width: 70px; height: 72px; }
+    .footer-links { display: flex; gap: 22px; font-size: 10px; }
+    .copyright { font-size: 10px; }
+
+    @media (max-width: 850px) {
+      .nav-links { gap: 18px; }
+      .nav-cta { padding-inline: 14px; }
+      .hero { min-height: 590px; }
+      .search-panel { grid-template-columns: 1fr 1fr; }
+      .property-grid { grid-template-columns: repeat(2, 1fr); }
+      .property-card:last-child { display: none; }
+      .about { gap: 42px; }
+      .area-grid { grid-template-columns: repeat(2, 1fr); }
+      .area-card { min-height: 230px; }
+      .contact { gap: 38px; }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 36px, 500px); }
+      .announcement { font-size: 9px; letter-spacing: .1em; }
+      .nav { min-height: 70px; }
+      .brand-image { width: 62px; height: 64px; }
+      .menu-toggle { display: block; margin-left: auto; }
+      .nav-links { position: absolute; top: 70px; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 18px 17px; background: var(--sand); border-bottom: 1px solid var(--line); }
+      .nav-links.open { display: flex; flex-direction: column; }
+      .nav-links a { padding: 13px 0; }
+      .nav-cta { display: none; }
+      .hero { min-height: 570px; }
+      .hero::after { background: linear-gradient(90deg, rgba(14,26,21,.76), rgba(14,26,21,.26)); }
+      .hero-content { padding-block: 73px 132px; }
+      h1 { font-size: clamp(45px, 12vw, 64px); }
+      .hero-copy { max-width: 350px; font-size: 13px; }
+      .hero-note { right: 18px; bottom: 24px; font-size: 8px; }
+      .search-panel { grid-template-columns: 1fr 1fr; gap: 20px 14px; width: calc(100% - 36px); padding: 19px; }
+      .search-button { min-width: 0; grid-column: 1 / -1; }
+      .section { padding-block: 72px; }
+      .section-heading, .areas-heading { align-items: start; flex-direction: column; }
+      .section-heading { margin-bottom: 24px; }
+      .section-heading h2, .about-copy h2, .areas-heading h2, .contact-copy h2 { font-size: 37px; }
+      .property-grid { grid-template-columns: 1fr; gap: 17px; }
+      .property-card:last-child { display: block; }
+      .property-photo { height: 245px; }
+      .about { grid-template-columns: 1fr; gap: 32px; }
+      .about-image-wrap { padding: 0 23px 23px 0; }
+      .about-image { height: 300px; }
+      .about-copy { padding-bottom: 8px; }
+      .stat-row { gap: 24px; }
+      .stat strong { font-size: 25px; }
+      .areas-heading { margin-bottom: 24px; }
+      .area-grid { gap: 10px; }
+      .area-card { min-height: 185px; padding: 14px; }
+      .area-card h3 { font-size: 20px; }
+      .contact { grid-template-columns: 1fr; gap: 28px; }
+      .contact-card { padding: 24px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .footer-links { flex-wrap: wrap; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">A more considered way to find your home in Dubai <span>·</span> Welcome to Giivaa Homes</div>
+  <header>
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Giivaa Homes home">
+        <img class="brand-image" src="giivaa-logo.png" alt="Giivaa Homes - Find your dream home">
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="#properties">Properties</a>
+        <a href="#about">Our approach</a>
+        <a href="#areas">Dubai areas</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="#contact">Speak with an advisor <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <img class="hero-image" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&amp;fit=crop&amp;w=2200&amp;q=85" alt="" fetchpriority="high">
+      <div class="hero-content wrap">
+        <div class="eyebrow">A home for the way you live</div>
+        <h1>Find your place<br>in Dubai.</h1>
+        <p class="hero-copy">From vibrant city residences to peaceful waterfront homes, discover a more personal approach to Dubai real estate.</p>
+        <a class="button button-light" href="#properties">Explore properties <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="hero-note">Dubai, United Arab Emirates</div>
+    </section>
+
+    <form class="search-panel wrap" id="property-search" aria-label="Find a property">
+      <div class="field">
+        <label for="area-select">Where would you like to live?</label>
+        <select id="area-select" name="area">
+          <option value="all">All Dubai</option>
+          <option value="downtown">Downtown Dubai</option>
+          <option value="palm">Palm Jumeirah</option>
+          <option value="marina">Dubai Marina</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="type-select">Property type</label>
+        <select id="type-select" name="type">
+          <option value="all">Any property</option>
+          <option value="apartment">Apartment</option>
+          <option value="villa">Villa</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="purpose-select">I'm looking to</label>
+        <select id="purpose-select" name="purpose">
+          <option value="all">Buy or rent</option>
+          <option value="buy">Buy</option>
+          <option value="rent">Rent</option>
+        </select>
+      </div>
+      <button class="button search-button" type="submit">Find a home <span aria-hidden="true">→</span></button>
+    </form>
+
+    <section class="section wrap" id="properties">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">A handpicked collection</div>
+          <h2>Homes worth coming home to.</h2>
+        </div>
+        <a class="text-link" href="#contact">Find your perfect home <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="property-grid">
+        <article class="property-card" data-area="downtown" data-type="apartment" data-purpose="buy">
+          <a href="#contact" aria-label="Enquire about a Downtown Dubai residence">
+            <div class="property-photo">
+              <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Elegant contemporary apartment living space" loading="lazy">
+              <span class="tag">City living</span>
+            </div>
+            <div class="property-info">
+              <div class="location">Downtown Dubai</div>
+              <h3>Contemporary city residence</h3>
+              <div class="property-meta"><span>2 beds</span><span>2 baths</span><span class="price">AED 2.4M</span></div>
+            </div>
+          </a>
+        </article>
+        <article class="property-card" data-area="palm" data-type="villa" data-purpose="buy">
+          <a href="#contact" aria-label="Enquire about a Palm Jumeirah home">
+            <div class="property-photo">
+              <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Modern villa overlooking a swimming pool" loading="lazy">
+              <span class="tag">Island retreat</span>
+            </div>
+            <div class="property-info">
+              <div class="location">Palm Jumeirah</div>
+              <h3>Private waterfront villa</h3>
+              <div class="property-meta"><span>4 beds</span><span>5 baths</span><span class="price">AED 12.8M</span></div>
+            </div>
+          </a>
+        </article>
+        <article class="property-card" data-area="marina" data-type="apartment" data-purpose="rent">
+          <a href="#contact" aria-label="Enquire about a Dubai Marina apartment">
+            <div class="property-photo">
+              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Bright modern apartment with floor-to-ceiling windows" loading="lazy">
+              <span class="tag">Marina views</span>
+            </div>
+            <div class="property-info">
+              <div class="location">Dubai Marina</div>
+              <h3>Light-filled marina apartment</h3>
+              <div class="property-meta"><span>1 bed</span><span>1 bath</span><span class="price">AED 115K / yr</span></div>
+            </div>
+          </a>
+        </article>
+      </div>
+      <p class="disclaimer">Illustrative showcase only. Property images, prices and details are examples and are not confirmed listings or offers.</p>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="about-image-wrap wrap">
+        <img class="about-image" src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&amp;fit=crop&amp;w=1100&amp;q=80" alt="Warm, thoughtfully designed modern home" loading="lazy">
+      </div>
+      <div class="about-copy">
+        <div class="eyebrow">Your move, made personal</div>
+        <h2>More than a property. A place to belong.</h2>
+        <p>Finding a home is about more than an address. Giivaa Homes brings a thoughtful, people-first approach to exploring Dubai—helping you navigate the neighbourhoods, possibilities and details that make a place feel right.</p>
+        <a class="text-link" href="#contact">Get to know us <span aria-hidden="true">↗</span></a>
+        <div class="stat-row">
+          <div class="stat"><strong>01:1</strong><span>Personal guidance</span></div>
+          <div class="stat"><strong>Dubai</strong><span>Local perspective</span></div>
+          <div class="stat"><strong>For you</strong><span>Tailored search</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section areas" id="areas">
+      <div class="wrap">
+        <div class="areas-heading">
+          <div><div class="eyebrow">Get to know the neighbourhoods</div><h2>Discover a side of Dubai that feels like you.</h2></div>
+          <p>Every neighbourhood has its own rhythm. Explore a few of the city's most loved places to call home.</p>
+        </div>
+        <div class="area-grid">
+          <a class="area-card" href="#properties"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&amp;fit=crop&amp;w=700&amp;q=75" alt="" loading="lazy"><div><h3>Downtown Dubai</h3><p>City energy, iconic views</p></div></a>
+          <a class="area-card" href="#properties"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&amp;fit=crop&amp;w=700&amp;q=75" alt="" loading="lazy"><div><h3>Palm Jumeirah</h3><p>Waterfront living, island calm</p></div></a>
+          <a class="area-card" href="#properties"><img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&amp;fit=crop&amp;w=700&amp;q=75" alt="" loading="lazy"><div><h3>Dubai Marina</h3><p>Waterside walks, city life</p></div></a>
+          <a class="area-card" href="#properties"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=700&amp;q=75" alt="" loading="lazy"><div><h3>Emirates Hills</h3><p>Space, privacy, greenery</p></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact wrap" id="contact">
+      <div class="contact-copy">
+        <div class="eyebrow">Let's find your next chapter</div>
+        <h2>Tell us what home means to you.</h2>
+        <p>Whether you are buying, renting or simply exploring, our team is here to help you take the next step with confidence.</p>
+      </div>
+      <div class="contact-card">
+        <h3>Start a conversation</h3>
+        <p>Get in touch with Giivaa Homes Real Estate Brokers to discuss your Dubai property needs.</p>
+        <div class="contact-details">
+          <a class="contact-detail" href="mailto:giivaahomes@gmail.com"><span aria-hidden="true">✉</span>giivaahomes@gmail.com</a>
+          <a class="contact-detail" href="tel:+971566597007"><span aria-hidden="true">☎</span>+971 56 659 7007</a>
+        </div>
+        <a class="button" href="mailto:giivaahomes@gmail.com?subject=Dubai%20property%20enquiry%20-%20Giivaa%20Homes&amp;body=Hello%20Giivaa%20Homes%2C%0A%0AI%27m%20interested%20in%20learning%20more%20about%20your%20Dubai%20properties.%20Please%20contact%20me.%0A%0AName%3A%0APhone%3A%0APreferred%20area%3A%0ABuy%20or%20rent%3A">Send an email enquiry <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner wrap">
+      <a class="brand" href="#home" aria-label="Giivaa Homes home">
+        <img class="brand-image" src="giivaa-logo.png" alt="Giivaa Homes - Find your dream home" loading="lazy">
+      </a>
+      <div class="footer-links"><a href="#properties">Properties</a><a href="#about">Our approach</a><a href="#areas">Neighbourhoods</a><a href="#contact">Contact</a></div>
+      <div class="copyright">© <span id="year"></span> Giivaa Homes</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+      });
+    });
+
+    document.querySelector("#property-search").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const area = document.querySelector("#area-select").value;
+      const type = document.querySelector("#type-select").value;
+      const purpose = document.querySelector("#purpose-select").value;
+      let matches = 0;
+
+      document.querySelectorAll(".property-card").forEach((card) => {
+        const visible = (area === "all" || card.dataset.area === area)
+          && (type === "all" || card.dataset.type === type)
+          && (purpose === "all" || card.dataset.purpose === purpose);
+        card.hidden = !visible;
+        if (visible) matches += 1;
+      });
+
+      const heading = document.querySelector("#properties h2");
+      heading.textContent = matches ? "Homes worth coming home to." : "Let's find the right home for you.";
+      document.querySelector("#properties").scrollIntoView({ behavior: "smooth" });
+    });
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
